@@ -1,8 +1,13 @@
 //
 //  Project1App.swift
 //  Shared
+// CIS 137
 //
-//  Created by Les Poltrack on 9/17/21.
+//  Project 1
+//  Les Poltrack
+//  Conrad Boucher
+//  Group 4
+//  Sept 20, 2021
 //
 
 import SwiftUI
