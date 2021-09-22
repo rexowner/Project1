@@ -15,6 +15,7 @@ import SwiftUI
 struct ContentView: View {
 
     @State private var dog: String = ""
+    @State private var showText: Bool = false
     let dogsDict: Dictionary<String, String>
     var columns: [GridItem] =
              Array(repeating: .init(.flexible()), count: 3)
@@ -29,8 +30,7 @@ struct ContentView: View {
         "Norwegian Lundehund",
         "Pharaoh Hound",
         "Scottish Terrier",
-        "Tosa",
-        ""
+        "Tosa"
         ]
 
         let dogValues = ["The Airedale stands among the world's most versatile dog breeds and has distinguished himself as hunter, athlete, and companion.",
@@ -42,8 +42,7 @@ struct ContentView: View {
                          "From Norway’s rocky island of Vaeroy, the uniquely constructed Norwegian Lundehund is the only dog breed created for the job of puffin hunting. With puffins now a protected species, today’s Lundehund is a friendly, athletic companion.",
                          "The Pharaoh Hound, ancient \"Blushing Dog\" of Malta, is an elegant but rugged sprinting hound bred to course small game over punishing terrain. Quick and tenacious on scent, these friendly, affectionate hounds settle down nicely at home.",
                          "A solidly compact dog of vivid personality, the Scottish Terrier is an independent, confident companion of high spirits. Scotties have a dignified, almost-human character.",
-                         "The Tosa's temperament is marked by patience, composure, boldness and courage. He is normally a tranquil, quiet, and obedient dog, with a calm but vigilant demeanor.",
-                         ""
+                         "The Tosa's temperament is marked by patience, composure, boldness and courage. He is normally a tranquil, quiet, and obedient dog, with a calm but vigilant demeanor."
         ]
         
         dogsDict = Dictionary(uniqueKeysWithValues: zip(dogKeys, dogValues))
@@ -59,14 +58,16 @@ struct ContentView: View {
                         Image(key)
                             .resizable()
                             .scaledToFit()
+                            .border(Color.blue)
                             .onTapGesture {
                                 dog = key
+                                self.showText = true
                             }
                             .padding(5)
                     }
                 }
             }
-            Text(dogsDict[dog]!)
+            Text(showText ? dogsDict[dog]! : "")
                 .padding()
         }
     }
